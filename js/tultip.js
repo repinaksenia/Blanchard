@@ -14,6 +14,8 @@ const poppers = document.querySelectorAll('.popper');
         name: 'offset',
         options: {
           offset: [0, 9],
+          gpuAcceleration: false,
+          adaptive: false,
           // element: arrow,
         },
       },

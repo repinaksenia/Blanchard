@@ -161,7 +161,7 @@ const swiper__projects = new Swiper('.projects__box', {
   // Optional parameters
   // direction: 'vertical',
   // slidesPerGroup: 3,
-  slidesPerView: 3,
+  slidesPerView: 1,
   spaceBetween: 50,
   // loop: true,
   autoHeight: true,
