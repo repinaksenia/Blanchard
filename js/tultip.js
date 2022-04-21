@@ -1,50 +1,13 @@
-const poppers = document.querySelectorAll('.popper');
 
-  // Pass the button, the tooltip, and some options, and Popper will do the
-  // magic positioning for you:
+tippy('#marker_1', {
+  content: 'Пример современных тенденций - современная методология разработки',
 
-  poppers.forEach(popper =>{
-    const button = popper.querySelector('.marker');
-    const tooltip = popper.querySelector('.popup');
-
-  Popper.createPopper(button, tooltip, {
-    placement: 'top',
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 9],
-          gpuAcceleration: false,
-          adaptive: false,
-          // element: arrow,
-        },
-      },
-    ],
-
-  });
+});
+tippy('#marker_2', {
+  content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
+});
+tippy('#marker_3', {
+  content: 'В стремлении повысить качество',
 });
 
-//   function show() {
-//     tooltip.setAttribute('data-show', '');
 
-//     // We need to tell Popper to update the tooltip position
-//     // after we show the tooltip, otherwise it will be incorrect
-//     popperInstance.update();
-//   }
-
-//   function hide() {
-//     tooltip.removeAttribute('data-show');
-//   }
-
-//   const showEvents = ['mouseenter', 'focus'];
-//   const hideEvents = ['mouseleave', 'blur'];
-
-//   showEvents.forEach((event) => {
-//     button.addEventListener(event, show);
-//   });
-
-//   hideEvents.forEach((event) => {
-//     button.addEventListener(event, hide);
-//   });
-
-// });

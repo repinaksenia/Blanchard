@@ -8,31 +8,35 @@ document.addEventListener('DOMContentLoaded', function(){
         tabContent.classList.remove('tab-active')
 
       })
-      // document.querySelectorAll('.tab_btn').forEach(function(TabBtnColor){
-      //   TabBtnColor.classList.remove('tab_color')
-      // })
+
       document.querySelector(`[data-target="${path}"]`).classList.add('tab-active')
-      // document.querySelector(`[data-path="${path}"]`).classList.add('tab_color')
     })
   })
 })
 
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.accordion__link').forEach(function(tab) {
+
     tab.addEventListener('click', function(event) {
       const path1 = event.currentTarget.dataset.path
       console.log(path1)
+      document.querySelectorAll(".accordion__link").forEach(el4 => {
+        if (el4 != path1) {
+          el4.classList.remove("is-active");
+        }
+      });
+
       document.querySelectorAll('.tab-content__left').forEach(function(content) {
         console.log(content)
         content.classList.remove('author-active')
 
       })
-      // document.querySelectorAll('.tab_btn').forEach(function(TabBtnColor){
-      //   TabBtnColor.classList.remove('tab_color')
-      // })
+
       document.querySelector(`[data-target="${path1}"]`).classList.add('author-active')
-      // document.querySelector(`[data-path="${path}"]`).classList.add('tab_color')
+      document.querySelector(`[data-path="${path1}"]`).classList.add('is-active')
+
     })
+
   })
 })
 
@@ -85,7 +89,5 @@ $( function() {
    });
   });
 
-// Setter
-// $( ".accordion__item" ).accordion( "option", "heightStyle", "content" );
 
 
