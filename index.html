@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css"/>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.css" integrity="sha512-uZTwaYYhJLFXaXYm1jdNiH6JZ1wLCTVnarJza7iZ1OKQmvi6prtk85NMvicoSobylP5K4FCdGEc4vk1AYT8b9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./style/choices.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/style.css">
@@ -19,7 +20,6 @@
   </head>
   <body id="scroll">
     <header class="header">
-      <!-- <div class="container"> -->
         <div class="header__top">
           <div class="header__container">
             <button class="burger" id="burger">
@@ -68,13 +68,6 @@
                 </ul>
               </nav>
               <div class="header__enter-link">
-
-                <!-- <svg class="header__icon" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.12056 9.09278L6.13889 10.1111L9.75 6.5L6.13889 2.88889L5.12056 3.90722L6.98389 5.77778H0V7.22222H6.98389L5.12056 9.09278ZM11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V4.33333H1.44444V1.44444H11.5556V11.5556H1.44444V8.66667H0V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0Z" fill="white"/>
-                </svg>
-                <svg class="header__icon-hover" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9.62056 9.09278L10.6389 10.1111L14.25 6.5L10.6389 2.88889L9.62056 3.90722L11.4839 5.77778H0V7.22222H11.4839L9.62056 9.09278ZM16.0556 0H5.94444C5.14278 0 4.5 0.65 4.5 1.44444V4.33333H5.94444V1.44444H16.0556V11.5556H5.94444V8.66667H4.5V11.5556C4.5 12.35 5.14278 13 5.94444 13H16.0556C16.85 13 17.5 12.35 17.5 11.5556V1.44444C17.5 0.65 16.85 0 16.0556 0Z" fill="#C283F3"/>
-                  </svg> -->
                 <a class="header__link bg-focus" href="#" aria-label="Ссылка войти">Войти</a>
                 <span class="header__icon-enter"></span>
               </div>
@@ -83,11 +76,13 @@
         </div>
         <div class="header__bottom">
           <div class="header__container header__bottom-container">
-            <nav class="menu">
-              <ul class="menu__list">
-                <li class="menu__item">
-                  <button class="menu__icon bg-focus" data-path="one" aria-label="Пункт выпадающего меню: реализм">Реализм
-                    <span class="menu__item-icon"></span>
+            <nav class="header__bottom__menu menu-bottom">
+              <ul class="menu-bottom__list">
+                <li class="menu-bottom__item">
+                  <button class="menu-bottom__btn bg-focus" data-path="one" aria-label="Пункт выпадающего меню: реализм">Реализм
+                    <svg class="menu-bottom__btn-icon" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 1L6 6L1 1" stroke="white"/>
+                    </svg>
                   </button>
                   <div class="submenu" data-target="one" role="menu">
                     <nav class="nav" aria-label="Навигация">
@@ -100,9 +95,11 @@
                     </nav>
                   </div>
                 </li>
-                <li class="menu__item">
-                  <button class="menu__icon bg-focus" data-path="two" aria-label="Пункт выпадающего меню: импрессионизм">Импрессионизм
-                    <span class="menu__item-icon"></span>
+                <li class="menu-bottom__item">
+                  <button class="menu-bottom__btn bg-focus" data-path="two" aria-label="Пункт выпадающего меню: импрессионизм">Импрессионизм
+                    <svg class="menu-bottom__btn-icon" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 1L6 6L1 1" stroke="white"/>
+                    </svg>
                   </button>
                   <div class="submenu customScroll"  data-target="two">
                     <nav class="nav" aria-label="Навигация">
@@ -115,12 +112,11 @@
                     </nav>
                   </div>
                 </li>
-                <li class="menu__item">
-                  <button class="menu__icon bg-focus" data-path="three" aria-label="Пункт выпадающего меню: постимпрессионизм">Постимпрессионизм
-                    <!-- <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li class="menu-bottom__item">
+                  <button class="menu-bottom__btn bg-focus" data-path="three" aria-label="Пункт выпадающего меню: постимпрессионизм">Постимпрессионизм
+                    <svg class="menu-bottom__btn-icon" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11 1L6 6L1 1" stroke="white"/>
-                    </svg> -->
-                    <span class="menu__item-icon"></span>
+                    </svg>
                   </button>
                   <div class="submenu customScroll"  data-target="three">
                     <nav class="nav" aria-label="Навигация">
@@ -133,9 +129,11 @@
                     </nav>
                   </div>
                 </li>
-                <li class="menu__item">
-                  <button class="menu__icon bg-focus" data-path="four" aria-label="Пункт выпадающего меню: авангард">Авангард
-                    <span class="menu__item-icon"></span>
+                <li class="menu-bottom__item">
+                  <button class="menu-bottom__btn bg-focus" data-path="four" aria-label="Пункт выпадающего меню: авангард">Авангард
+                    <svg class="menu-bottom__btn-icon" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 1L6 6L1 1" stroke="white"/>
+                    </svg>
                   </button>
                   <div class="submenu customScroll"  data-target="four">
                     <nav class="nav" aria-label="Навигация">
@@ -148,9 +146,11 @@
                     </nav>
                   </div>
                 </li>
-                <li class="menu__item">
-                  <button class="menu__icon bg-focus" data-path="five" aria-label="Пункт выпадающего меню: футуризм">Футуризм
-                    <span class="menu__item-icon"></span>
+                <li class="menu-bottom__item">
+                  <button class="menu-bottom__btn bg-focus" data-path="five" aria-label="Пункт выпадающего меню: футуризм">Футуризм
+                    <svg class="menu-bottom__btn-icon" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 1L6 6L1 1" stroke="white"/>
+                    </svg>
                   </button>
                   <div class="submenu customScroll"  data-target="five">
                     <nav class="nav" aria-label="Навигация">
@@ -232,7 +232,6 @@
                 </label>
               </li>
             </ul>
-            <!-- <p class="desc gallery__desc">Вам предоставляется 10 бесплатных скачиваний. Для увеличения количества скачиваний <a href="#" class="gallery__link">авторизуйтесь</a>, либо воспользуйтесь лицензией.</p> -->
           </div>
             <div class="gallery__wrapper">
               <div class="gallery__buttons">
@@ -838,134 +837,62 @@
           <div class="desc projects__desc tultip">
             Предварительные выводы: постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость своевременного выполнения сверхзадачи. А ещё независимые государства смешаны с не уникальными данными до степени совершенной неузнаваемости, из&nbsp;-&nbsp;за чего возрастает их статус бесполезности. Прежде всего, постоянное информационно-пропагандистское
             <div class="popper">
-              <div class="marker" id="marker_1" tabindex="0"></div>
-              <div class="popup popup_1" id="popup_1">Пример современных тенденций - современная методология разработки
-                <div class="arrow" id="arrow1" data-popper-arrow></div>
+
+              <div data-tippy-root>
+                <div class="marker" id="marker_1" tabindex="0"></div>
               </div>
             </div>
             обеспечение нашей деятельности однозначно фиксирует необходимость экономической целесообразности принимаемых решений. И нет сомнений, что действия представителей оппозиции могут быть рассмотрены
             <div class="popper">
               <div class="marker" id="marker_2" tabindex="0"></div>
-              <div class="popup popup_2" id="popup_2">Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции
-                <div class="arrow" id="arrow2" data-popper-arrow></div>
-              </div>
             </div>
             исключительно в разрезе маркетинговых и финансовых&nbsp;
             <div class="popper">
               <div class="marker" id="marker_3" tabindex="0"></div>
-              <div class="popup popup_3" id="popup_3">В стремлении повысить качество
-                <div class="arrow" id="arrow3" data-popper-arrow></div>
-              </div>
             </div>
             предпосылок. Банальные, но неопровержимые выводы, а также представители современных социальных резервов призывают нас к новым свершениям, которые, в свою очередь, должны быть смешаны с не уникальными данными до степени совершенной неузнаваемости. Подробнее: <span class="projects__link-focus"><a class="projects__link bg-focus" href="blanchard-art.ru/projects/about">blanchard-art.ru</a></span>
           </div>
           <div class="projects__bottom">
             <h3 class="subtitle projects__subtitle">Партнёры проектов:</h3>
-            <!-- <div class="projects__partners"> -->
               <div class="projects__swiper">
                 <div class="projects__prev"></div>
                 <div class="projects__box">
                   <div class="swiper-wrapper" role="group" aria-live="polite">
                     <a class="swiper-slide slaid1" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size1" src="./img/partner-1.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner1-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner1-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner1-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner1-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner1-1920.png" alt="Логотип партнёра 1">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid2" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size2" src="./img/partner-2.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner2-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner2-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner2-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner2-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner2-1920.png" alt="Логотип партнёра 2">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid3" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size3" src="./img/partner-3.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner3-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner3-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner3-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner3-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner3-1920.png" alt="Логотип партнёра 3">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid4" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size4" src="./img/partner-4.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner4-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner4-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner4-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner4-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner4-1920.png" alt="Логотип партнёра 4">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid5" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size5" src="./img/partner-5.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner5-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner5-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner5-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner5-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner5-1920.png" alt="Логотип партнёра 5">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid6" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size6" src="./img/partner-6.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner6-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner6-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner6-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner6-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner6-1920.png" alt="Логотип партнёра 6">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid7" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size7" src="./img/partner-7.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner7-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner7-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner7-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner7-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner7-1920.png" alt="Логотип партнёра 7">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid8" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size8" src="./img/partner-8.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner8-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner8-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner8-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner8-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner8-1920.png" alt="Логотип партнёра 8">
-                      </picture> -->
                     </a>
                     <a class="swiper-slide slaid9" aria-roledescription="slide" href="#">
                       <img class="projects__icon projects__icon-size9" src="./img/partner-9.png" alt="Ссылка на сайт партнера">
-                      <!-- <picture class="projects__pic">
-                        <source class="projects__icon" srcset="./img/partner9-320.png" type="image/jpeg" media="(max-width: 320px)">
-                        <source class="projects__icon" srcset="./img/partner9-768.png" type="image/jpeg" media="(max-width: 768px)">
-                        <source class="projects__icon" srcset="./img/partner9-1024.png" type="image/jpeg" media="(max-width: 1024px)">
-                        <source class="projects__icon" srcset="./img/partner9-1920.png" type="image/jpeg" media="(max-width: 1920px)">
-                        <img class="projects__icon" src="./img/partner9-1920.png" alt="Логотип партнёра 9">
-                      </picture> -->
                     </a>
                   </div>
                 </div>
                 <div class="projects__next"></div>
               </div>
-            <!-- </div> -->
           </div>
         </div>
       </section>
       <section class="contacts" id="contacts">
-        <!-- <div class="container"> -->
         <div class="contacts__top" id="mailing">
           <div class="container contacts__container">
             <div class="contacts__top-address">
@@ -973,7 +900,6 @@
               <address class="desc contacts__address">Леонтьевский переулок, дом 5/1</address>
             </div>
             <form class="contacts__form form" action="#">
-              <!-- <span class="subtitle contacts__subtitle">Заказать обратный звонок</span> -->
               <div class="contacts__wrapper-name">
                 <input class="form__item form__name" type="text" placeholder="Имя*" data-validate-field="name" name="name" id="name">
               </div>
@@ -1042,7 +968,5 @@
     <script src="./js/map.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="./js/tultip.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.js" integrity="sha512-rn0CaCtyheymRT43p0ZuFH0SvNriLU5cuJpY2f4IcyLrbHzJdsIF1dygi9oNha1BhHagO8U+h2xRWCosYf9gCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-
   </body>
   </html>
