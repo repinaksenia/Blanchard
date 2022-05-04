@@ -1,4 +1,5 @@
 html {
+  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 
@@ -2157,6 +2158,9 @@ input:focus-visible + span:before {
   }
 }
 @media (max-width: 1200px) {
+  .scroll.is-active {
+    overflow: hidden;
+  }
   .container {
     margin: 0 auto;
     padding-left: 50px;
@@ -2185,8 +2189,8 @@ input:focus-visible + span:before {
   .top-menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
+    justify-content: flex-start;
+    position: fixed;
     top: 0;
     left: 0;
     bottom:0;
@@ -2236,6 +2240,7 @@ input:focus-visible + span:before {
     margin-bottom: 30px;
   }
   .nav {
+    flex-grow: 0;
     margin-bottom: 5%;
   }
   .nav__list {
@@ -2286,21 +2291,23 @@ input:focus-visible + span:before {
     position: relative;
   }
   .header__form {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     top: -100px;
     right: 0;
     width: 364px;
     padding-top: 35px;
     padding-right: 35px;
+
     transition-property: opacity, visibility;
     transition-duration: .3s;
     transition-timing-function: ease-in-out;
   }
   .header__form.is-active {
-    display: block;
     position: absolute;
+    opacity: 1;
+    visibility: visible;
     top: -100px;
     right: 0;
     padding-top: 35px;
@@ -2761,6 +2768,8 @@ input:focus-visible + span:before {
   display: none;
 }
 .header__form {
+  opacity: 0;
+  visibility: hidden;
   top: -80px;
   left: 0;
   bottom:0;
@@ -2773,7 +2782,8 @@ input:focus-visible + span:before {
   transform: translate(-100%);
 }
  .header__form.is-active {
-   display: block;
+   opacity: 1;
+   visibility: visible;
    position: absolute;
    top: -80px;
    left: 0;
@@ -3122,8 +3132,6 @@ input:focus-visible + span:before {
     font-weight: 600;
   }
   .top-menu {
-    bottom: -245px;
-    height: 600px;
     padding-top: 15px;
     padding-left: 16px;
     padding-bottom: 27px;
@@ -3592,5 +3600,11 @@ input:focus-visible + span:before {
   }
   .burger {
     margin-right: 0;
+  }
+  .form__btn-text-hidden {
+    display: none;
+  }
+  .form__btn {
+    padding: 3.2% 11.5%;
   }
 }
