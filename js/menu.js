@@ -75,6 +75,7 @@ window.addEventListener('DOMContentLoaded', function(){
   document.querySelector('#burger').addEventListener('click', function(){
     document.querySelector('#top__menu').classList.remove('not-active')
     document.querySelector('#top__menu').classList.toggle('is-active')
+    document.querySelector('#scroll').classList.add('is-active')
 
     })
 })
@@ -82,9 +83,21 @@ window.addEventListener('DOMContentLoaded', function(){
   document.querySelector('#cross-icon').addEventListener('click', function(){
     document.querySelector('#top__menu').classList.remove('is-active')
     document.querySelector('#top__menu').classList.toggle('not-active')
-
+    document.querySelector('#scroll').classList.remove('is-active')
   })
 })
+
+window.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll(".nav__link").forEach(function(navLink){
+    navLink.addEventListener('click', function(){
+      document.querySelector('#top__menu').classList.remove('is-active')
+      document.querySelector('#top__menu').classList.toggle('not-active')
+      document.querySelector('#scroll').classList.remove('is-active')
+    })
+  })
+
+})
+
 // Search
 window.addEventListener('DOMContentLoaded', function(){
   document.querySelector('#header__search').addEventListener('click', function(){
